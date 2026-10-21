@@ -2,6 +2,14 @@
 
 - [Read the documentation for the project](docs/info.md)
 
+> **This fork focuses on the fully differential analog multiplier laid out in IHP SG13G2 (130 nm BiCMOS) for the IEEE UNIC-CASS 2026 program.**
+>
+> - **Status:** submitted through UNIC-CASS 2026; DRC clean in KLayout (see `DRC/`); LVS logs in `LVS/lvs_run/`. No silicon results yet.
+> - **Paper:** I. Nethmal\*, L. Atapattu\*, E. Jayathilaka\*, S. Madugalle\*, *et al.*, "An Open-Source CMOS ASIC for I/Q Based Electrode-Skin Impedance Mismatch Extraction," accepted at **IEEE ICM 2026** (\*equal contribution).
+> - **Op-amp tapeout (SKY130, Tiny Tapeout TTSKY25a):** [NethmalWDI/fully_differential_opamp](https://github.com/NethmalWDI/fully_differential_opamp)
+> - **Tools:** Xschem and ngspice (schematic and simulation), Magic (layout), KLayout (DRC and LVS)
+> - **Roles:** see [Contributors and roles](#contributors-and-roles) at the end of this page.
+
 ---
 
 # Project Overview
@@ -129,11 +137,7 @@ The complete chip will include:
 
 The goal is to extract the **impedance mismatch signal** generated due to electrode motion.
 
-The complete ASIC will be:
-
-- Simulated using the **Sky130 PDK**
-- Implemented with **full layout design**
-- Verified using **Cadence design tools**
+The complete ASIC was laid out in **SKY130** with open-source tools (≈0.24 mm², ≈2 mW at 1.8 V in post-layout simulation) and is described in the ICM 2026 paper.
 
 ---
 
@@ -192,7 +196,7 @@ A **resistor-based CMFB topology** is used to stabilize the output common-mode v
 
 ---
 
-# Operational Amplifier Specifications
+# Operational Amplifier Design Targets (IHP version)
 
 | Parameter | Value 1 | Value 2 | Value 3 |
 |---|---|---|---|
@@ -200,8 +204,6 @@ A **resistor-based CMFB topology** is used to stabilize the output common-mode v
 | Input Common Mode Voltage | 0.55 V | 0.6 V | 0.65 V |
 | Output Common Mode Voltage | 0.55 V | 0.6 V | 0.65 V |
 | Temperature | 20°C | – | 50°C |
-| PSRR | 170 dB | 180 dB | 190 dB |
-| CMRR | 230 dB | 250 dB | 270 dB |
 | Phase Margin | 50° | 60° | 70° |
 | Gain Bandwidth Product | 800 kHz | 1 MHz | 1.2 MHz |
 | Open Loop DC Gain | 80 dB | 100 dB | 120 dB |
@@ -256,6 +258,8 @@ The **Layout Versus Schematic (LVS)** verification confirms that the implemented
 
 ![LVS Check](docs/LVS%20check.jpeg)
 
+> **Note on the LVS logs:** earlier runs in `LVS/lvs_run/` report mismatches caused by top-level port labelling. The final run reports *"Netlists match"* with the `IGNORE_TOP_PORTS_MISMATCH` option enabled, i.e. the device-level netlists match and only top-level port naming was relaxed.
+
 ### DRC Check
 
 The **Design Rule Check (DRC)** verifies that the layout follows all the design rules defined by the PDK.
@@ -269,3 +273,15 @@ The **Design Rule Check (DRC)** verifies that the layout follows all the design 
 The final objective of this project is to develop a **low-power CMOS ASIC capable of simultaneously measuring electrode–skin impedance during EEG acquisition**.
 
 The extracted impedance signal will enable **adaptive filtering techniques to remove motion artifacts**, improving the quality and reliability of biomedical signal acquisition systems.
+
+---
+
+# Contributors and roles
+
+| Contributor | Role (multiplier) |
+|---|---|
+| Lohan Atapattu | Schematic design and simulation |
+| Erandee Jayathilaka | Layout |
+| **Imasha Nethmal** | **Layout and post-layout simulation** |
+
+Department of Electronic and Telecommunication Engineering, University of Moratuwa, Sri Lanka. Original repository: [LohanAtapattu/Unic_Cass_IHP](https://github.com/LohanAtapattu/Unic_Cass_IHP).
