@@ -1,10 +1,11 @@
-# CMOS ASIC for Simultaneous Electrode–Skin Impedance Measurement
+# Fully Differential analog multiplier | IHP SG13G2 (130 nm BiCMOS)  | IEEE UNIC-CASS 2026
 
 - [Read the documentation for the project](docs/info.md)
 
 > **This fork focuses on the fully differential analog multiplier laid out in IHP SG13G2 (130 nm BiCMOS) for the IEEE UNIC-CASS 2026 program.**
 >
-> - **Status:** submitted through UNIC-CASS 2026; DRC clean in KLayout (see `DRC/`); LVS logs in `LVS/lvs_run/`. No silicon results yet.
+> - **Status:** 
+This multiplier design is a single phase of a three-phase project for a CMOS ASIC for Simultaneous Electrode–Skin Impedance Measurement. submitted through UNIC-CASS 2026; DRC clean in KLayout (see `DRC/`); LVS logs in `LVS/lvs_run/`. No silicon results yet.
 > - **Paper:** I. Nethmal\*, L. Atapattu\*, E. Jayathilaka\*, S. Madugalle\*, *et al.*, "An Open-Source CMOS ASIC for I/Q Based Electrode-Skin Impedance Mismatch Extraction," accepted at **IEEE ICM 2026** (\*equal contribution).
 > - **Op-amp tapeout (SKY130, Tiny Tapeout TTSKY25a):** [NethmalWDI/fully_differential_opamp](https://github.com/NethmalWDI/fully_differential_opamp)
 > - **Tools:** Xschem and ngspice (schematic and simulation), Magic (layout), KLayout (DRC and LVS)
